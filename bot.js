@@ -11,8 +11,9 @@ bot.on("ready", () => {
 bot.on("guildUpdate", (guild, oldGuild) => {
     const old_vanity = oldGuild.vanityURL
     const new_vanity = guild.vanityURL
-    console.log(old_vanity);
-    console.log(new_vanity);
+    const server_id = guild.id
+    console.log(old_vanity, server_id);
+    console.log(new_vanity, server_id);
 });
 
 bot.connect();
