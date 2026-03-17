@@ -20,32 +20,4 @@ bot.on("guildUpdate", (guild, oldGuild) => {
 
 });
 
-
-bot.on("guildMemberAdd", async (guild, member) => {
-    const user_id = member.user.id;
-    const guild_id = guild.id
-    const current_van = guild.vanityURL
-    const embed = {
-        description: `> **Vanity: [/${current_van}](https://discord.gg/${current_van})** \n> **Telegram: https://t.me/blahblahblah**`,
-        color: 0x101010
-    }
-    const embed2 = {
-        image: {
-        url: "https://i.pinimg.com/originals/c8/38/50/c838509cd460815c2f3ace89487e3fdf.gif"
-        },
-        color: 0x101010
-    }
-
-    try {
-        const dm = await bot.getDMChannel(user_id) 
-        await dm.createMessage({ embeds: [embed, embed2] })
-
-        await bot.kickGuildMember(guild_id, user_id, 'not allowed.')
-    } catch (error){
-        console.error(`${user_id} new member has joined ${guild_id}:`, error);
-    }
-});
-
-
-
 bot.connect();
